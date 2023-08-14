@@ -33,10 +33,12 @@
             <label class="form-label">Price</label>
             <div class="row">
               <div class="col-6">
-                <input type="number" class="form-control" id="from" min="0" aria-label="From" placeholder="From">
+                <input type="number" name="from-price" class="form-control" id="from" min="0" aria-label="From"
+                  placeholder="From">
               </div>
               <div class="col-6">
-                <input type="number" class="form-control" id="to" min="0" aria-label="To" placeholder="To">
+                <input type="number" name="to-price" class="form-control" id="to" min="0" aria-label="To"
+                  placeholder="To">
               </div>
             </div>
           </div>
@@ -45,11 +47,11 @@
             <label class="form-label">Width</label>
             <div class="row">
               <div class="col-6">
-                <input type="number" class="form-control" id="from_width" min="0" aria-label="From width"
-                  placeholder="From width">
+                <input type="number" name="from-width" class="form-control" id="from_width" min="0"
+                  aria-label="From width" placeholder="From width">
               </div>
               <div class="col-6">
-                <input type="number" class="form-control" id="to_width" min="0" aria-label="To width"
+                <input type="number" name="to-width" class="form-control" id="to_width" min="0" aria-label="To width"
                   placeholder="To width">
               </div>
             </div>
@@ -59,11 +61,11 @@
             <label class="form-label">Height</label>
             <div class="row">
               <div class="col-6">
-                <input type="number" class="form-control" id="from_height" min="0" aria-label="From height"
-                  placeholder="From height">
+                <input type="number" name="from-height" class="form-control" id="from_height" min="0"
+                  aria-label="From height" placeholder="From height">
               </div>
               <div class="col-6">
-                <input type="number" class="form-control" id="to_height" min="0" aria-label="To height"
+                <input type="number" name="to-height" class="form-control" id="to_height" min="0" aria-label="To height"
                   placeholder="To height">
               </div>
             </div>
@@ -72,11 +74,11 @@
           <div class="mb-3">
             <label for="sortby" class="form-label">Sort by</label>
             <select class="form-select" id="sortby">
-              <option value="1">Name</option>
-              <option value="2">Price: to lowest</option>
-              <option value="3">Price: to highest</option>
-              <option value="3">Birth: to highest</option>
-              <option value="3">Birth: to lowest</option>
+              <option value="name">Name</option>
+              <option value="priceLowest">Price: to lowest</option>
+              <option value="priceHighest">Price: to highest</option>
+              <option value="brithHighest">Birth: to highest</option>
+              <option value="brithLowest">Birth: to lowest</option>
             </select>
           </div>
 
@@ -93,29 +95,27 @@
         <ul class="row list-unstyled g-3 parrot-wrapper">
           <!-- template start -->
           <template class="parrot-wrapper__template">
-            <li class="col-6 parrot-wrapper__list" >
+            <li class="col-6 parrot-wrapper__list">
               <div class="card parrot-wrapper__inner">
-                <img
-                  width="200"
-                  height="257"
+                <img width="200" height="257"
                   src="https://media.istockphoto.com/photos/parrot-hyacinth-macaw-picture-id1359443019?b=1&k=20&m=1359443019&s=170667a&w=0&h=dteRZ9bM7sEvBbFE9it1r9O7IxlILXb1UnSoLNEVMAg="
                   alt="parrot image" class="card-img-top parrot-wrapper__img">
                 <div class="card-body parrot-wrapper__info">
                   <h3 class="card-title parrot-wrapper__title ">Hyacinth macaw</h3>
                   <p class="card-text fw-bold parrot-wrapper__price"><mark>$5000</mark></p>
                   <p class="badge bg-success parrot-wrapper__sizes">40sm x 10sm</p>
-  
+
                   <p class="card-text parrot-wrapper__brith-date">12.05.2022</p>
-             
+
                   <ul class="d-flex flex-wrap list-unstyled parrot-wrapper_features">
                     <!-- template-badge start-->
                     <template class="badge-template">
-                    <li class="badge parrot-wrapper__badge bg-primary me-1 mb-1">Beautiful</li>  
+                      <li class="badge parrot-wrapper__badge bg-primary me-1 mb-1">Beautiful</li>
                     </template>
                     <!-- template badge end -->
-                    
+
                   </ul>
-  
+
                   <div class="position-absolute top-0 end-0 d-flex">
                     <!-- Agar isFavorite false bo'ladigan bo'lsa i'ning classi "fa-solid fa-star" bo'lishi kerak. Agar unday bo'lmasa "fa fa-star-o" -->
                     <button class="btn rounded-0 btn-success iscomplate"><i class="iconka "
@@ -130,8 +130,8 @@
             </li>
           </template>
           <!-- template end -->
-          
-        
+
+
         </ul>
       </section>
 
@@ -139,12 +139,13 @@
         <h2 class="h4 mb-4">Favorite parrots</h2>
 
         <ul class="list-unstyled favorite-wrapper">
-         <template class="favorit-template">
-          <li class="card p-3 mb-2">
-            <h3 class="card-title h5 mb-2 favorite-wrapper__title ">Qizil Ara</h3>
-            <button class="btn btn-danger btn-sm d-inline favorite-wrapper__delete" style="width: fit-content" type="button">Remove</button>
-          </li>
-         </template>
+          <template class="favorit-template">
+            <li class="card p-3 mb-2">
+              <h3 class="card-title h5 mb-2 favorite-wrapper__title ">Qizil Ara</h3>
+              <button class="btn btn-danger btn-sm d-inline favorite-wrapper__delete" style="width: fit-content"
+                type="button">Remove</button>
+            </li>
+          </template>
         </ul>
       </section>
     </div>
@@ -161,7 +162,8 @@
           <form class="add-parrot">
             <div class="mb-3">
               <label for="parrot-title" class="form-label">Title</label>
-              <input type="search" name="parrot-title" class="form-control form-add-parrot" id="parrot-title" placeholder="Kakatu">
+              <input type="search" name="parrot-title" class="form-control form-add-parrot" id="parrot-title"
+                placeholder="Kakatu">
             </div>
             <div class="mb-3">
               <label for="parrot-img" class="form-label">Img URL</label>
@@ -169,30 +171,33 @@
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price ($)</label>
-              <input type="number" name="parrot-price" class="form-control form-add-parrot" id="price" placeholder="1000">
+              <input type="number" name="parrot-price" class="form-control form-add-parrot" id="price"
+                placeholder="1000">
             </div>
             <div class="mb-3">
               <label for="parrot-date" class="form-label">Birth date</label>
-              <input type="date" name="parrot-date" class="form-control form-add-parrot" id="parrot-date" placeholder="12.02.2022">
+              <input type="date" name="parrot-date" class="form-control form-add-parrot" id="parrot-date"
+                placeholder="12.02.2022">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Width and Height</label>
               <div class="row">
                 <div class="col-6">
-                  <input type="number" name="parrot-width" class="form-control form-add-parrot" id="parrot_width" min="0" aria-label="Parrot width"
-                    placeholder="Parrot width">
+                  <input type="number" name="parrot-width" class="form-control form-add-parrot" id="parrot_width"
+                    min="0" aria-label="Parrot width" placeholder="Parrot width">
                 </div>
                 <div class="col-6">
-                  <input type="number" name="parrot-height" class="form-control form-add-parrot" id="parrot_height" min="0" aria-label="Parrot height"
-                    placeholder="Parrot height">
+                  <input type="number" name="parrot-height" class="form-control form-add-parrot" id="parrot_height"
+                    min="0" aria-label="Parrot height" placeholder="Parrot height">
                 </div>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="features" class="form-label">Features ("," bilan ajratib yozing)</label>
-              <input type="text" name="features" class="form-control" id="features" placeholder="Qo'lga o'rgatilgan,Gapira oladi">
+              <input type="text" name="features" class="form-control" id="features"
+                placeholder="Qo'lga o'rgatilgan,Gapira oladi">
             </div>
             <button type="submit" class="btn btn-primary d-block w-100 p-2">Filter</button>
           </form>
@@ -202,7 +207,9 @@
   </div>
 
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js" integrity="sha512-rV0Q1QWodkoLjts/qP2XHtjvUPTmN46k4eH0lzOR3mDui8a0YnL/uqydipXA9mQ2wG6J4imL0BO6/26rcFho7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"
+    integrity="sha512-rV0Q1QWodkoLjts/qP2XHtjvUPTmN46k4eH0lzOR3mDui8a0YnL/uqydipXA9mQ2wG6J4imL0BO6/26rcFho7Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./js/locals.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

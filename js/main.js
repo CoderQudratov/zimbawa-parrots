@@ -1,19 +1,82 @@
 const add_parot_form = document.querySelector(".add-parrot");
+let sortBy = document.querySelector("#sortby");
 let addParrotInputs = document.querySelectorAll(".form-add-parrot");
 const parrotWrapper = document.querySelector(".parrot-wrapper");
 const templateParrot = document.querySelector(
   ".parrot-wrapper__template"
 ).content;
-const filterForm =document.querySelector('.filter').addEventListener('submit',handleFilter)
+const filterForm = document
+  .querySelector(".filter")
+  .addEventListener("submit", handleFilter);
+
+let sortObject = {
+  name: function (a, b) {
+    if (a.title < b.title) {
+      return -1;
+    } else {
+      return 1;
+    }
+  },
+  priceLowest(a, b) {
+    if (a.price > b.price) {
+      return -1;
+    } else {
+      return 1;
+    }
+  },
+  priceHighest(a, b) {
+    if (a.price < b.price) {
+      return -1;
+    } else {
+      return 1;
+    }
+  },
+  brithHighest(a, b) {
+    if (a.birthDate < b.birthDate) {
+      return -1;
+    } else {
+      return 1;
+    }
+  },
+  brithLowest(a, b) {
+    if (a.birthDate > b.birthDate) {
+      return -1;
+    } else {
+      return 1;
+    }
+  },
+};
 function handleFilter(event) {
-  event.preventDefault()
-  let data =new FormData(event.target)
-  let regex =new RegExp(data.get('search'),'gi')
-  let filter =[]
-  if (data.get('search').length>0) {
-   filter= parrots.filter(item=>item.title.match(regex))
+  event.preventDefault();
+  let data = new FormData(event.target);
+  let regex = new RegExp(data.get("search"), "gi");
+  let filter = [];
+  if (data.get("search").length > 0) {
+    filter = parrots.filter((item) => item.title.match(regex));
   }
-  handleRenderParrot(filter)
+  let fromPrice = data.get("from-price");
+  let toPrice = data.get("to-price");
+  let fromWidth = data.get("from-width");
+  let toWidth = data.get("to-width");
+  let fromHeight = data.get("from-height");
+  let toHeight = data.get("to-height");
+  if (fromPrice.length > 0 || toPrice.length > 0) {
+    filter = parrots.filter((item) => item.price >= fromPrice);
+    filter = filter.filter((item) => item.price <= toPrice);
+  }
+  if (fromWidth.length > 0 || toWidth.length > 0) {
+    filter = parrots.filter((item) => item.sizes.width >= fromWidth);
+    filter = filter.filter((item) => item.sizes.width <= toWidth);
+  }
+  if (fromHeight.length > 0 || toHeight.length > 0) {
+    filter = parrots.filter((item) => item.sizes.height >= fromHeight);
+    filter = filter.filter((item) => item.sizes.height <= toHeight);
+  }
+  if (sortBy.value !== null) {
+    filter = parrots.sort(sortObject[sortBy.value]);
+    console.log(sortBy);
+  }
+  handleRenderParrot(filter);
 }
 let favoritesParrot = document.querySelector(".favorite-wrapper");
 let favoriteTemplate = document.querySelector(".favorit-template").content;
